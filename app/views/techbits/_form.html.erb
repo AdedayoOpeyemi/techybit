@@ -1,0 +1,22 @@
+<%= form_with(model: techbit) do |form| %>
+  <% if techbit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(techbit.errors.count, "error") %> prohibited this techbit from being saved:</h2>
+
+      <ul>
+        <% techbit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bit %>
+    <%= form.text_area :bit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
