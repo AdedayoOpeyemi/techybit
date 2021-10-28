@@ -26,7 +26,7 @@ class TechbitsController < ApplicationController
 
     respond_to do |format|
       if @techbit.save
-        format.html { redirect_to @techbit, notice: "Techbit was successfully created." }
+        format.html { redirect_to root_path, notice: "Techbit was successfully created." }
         format.json { render :show, status: :created, location: @techbit }
       else
         format.html { render :new, status: :unprocessable_entity }
