@@ -1,22 +1,11 @@
-<%= form_with(model: techbit) do |form| %>
-  <% if techbit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(techbit.errors.count, "error") %> prohibited this techbit from being saved:</h2>
 
-      <ul>
-        <% techbit.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
+<%= simple_form_for(@techbit) do |f| %>
+  <%= f.error_notification %>
   <div class="field">
-    <%= form.label :bit %>
-    <%= form.text_area :bit %>
+    <div class="control">
+      <%= f.input :bit, label: "What's your bit", input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label"}, placeholder: "Type your bit..." %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.button :submit, class: "button is-info" %>
 <% end %>

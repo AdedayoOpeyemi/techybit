@@ -3,7 +3,8 @@ class TechbitsController < ApplicationController
 
   # GET /techbits or /techbits.json
   def index
-    @techbits = Techbit.all
+    @techbits = Techbit.all.order("created_at DESC")
+    @techbit = Techbit.new
   end
 
   # GET /techbits/1 or /techbits/1.json
