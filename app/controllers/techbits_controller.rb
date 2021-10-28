@@ -1,6 +1,6 @@
 class TechbitsController < ApplicationController
   before_action :set_techbit, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: %i[ index show ]
   # GET /techbits or /techbits.json
   def index
     @techbits = Techbit.all.order("created_at DESC")
@@ -13,7 +13,7 @@ class TechbitsController < ApplicationController
 
   # GET /techbits/new
   def new
-    @techbit = Techbit.new
+    @techbit = current_user.techbits.build
   end
 
   # GET /techbits/1/edit
@@ -22,7 +22,7 @@ class TechbitsController < ApplicationController
 
   # POST /techbits or /techbits.json
   def create
-    @techbit = Techbit.new(techbit_params)
+    @techbit = current_user.techbits.build(techbit_params)
 
     respond_to do |format|
       if @techbit.save
