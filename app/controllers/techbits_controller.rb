@@ -1,6 +1,7 @@
 class TechbitsController < ApplicationController
   before_action :set_techbit, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: %i[ index show ]
+  before_action :authenticate_user!
+
   # GET /techbits or /techbits.json
   def index
     @techbits = Techbit.all.order("created_at DESC")
